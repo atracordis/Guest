@@ -1,0 +1,123 @@
+<html>
+	<head>
+	<meta charset="ISO-8859-1">
+ 	<title>Tasty &mdash; Free Website Template, Free HTML5 Template by freehtml5.co</title>
+
+<link rel="stylesheet" href="Css.css">
+	</head>
+ 
+	<body onload="startTime()">
+<h1>
+  <span class="yellow">Soirée Wall Street</span></h1>
+<table class="container" >
+	<tbody>
+        <tr>
+            <td width="40%">Soft (Jus de Fruits/Soda) (20 cl)</td>
+            <td id="pp11"><span id="p11">2</span></td>
+            <td width="40%">Jäger (4 cl) + Soft</td>
+            <td id="pp12"><span id="p12">5</span></td>
+        </tr>
+        <tr>
+            <td>Smirnoff (4 cl) + Soft</td>
+            <td id="pp13"><span id="p13">10</span></td>
+            <td>Mojito (4 cl) + Soft</td>
+            <td id="pp14"><span id="p14">10</span></td>
+        </tr>
+        <tr>
+            <td>Champagne Moët (7 cl)</td>
+            <td id="pp15"><span id="p15">14</span></td>
+            <td>Gin Tonic</td>
+            <td id="pp16"><span id="p16">10</span></td>
+        </tr>
+        <tr>
+            <td>Rhum Cap'tain (4 cl) + Soft</td>
+            <td id="pp21"><span id="p21">10</span></td>
+            <td>Whiskey J&B (4 cl) + Soft</td>
+            <td id="pp22"><span id="p22">7</span></td>
+        </tr>
+        <tr>
+            <td>Salon (4 cl) + Soft</td>
+            <td id="pp23"><span id="p23">15</span></td>
+            <td>GET Perrier (4 cl)</td>
+            <td id="pp24"><span id="p24">7</span></td>
+        </tr>
+        <tr>
+            <td>Bière Despé (33 cl)</td>
+            <td id="pp25"><span id="p25">12</span></td>
+            <td>Shooter (2 cl)</td>
+            <td id="pp26"><span id="p26">2</span></td>
+        </tr>
+    </tbody>
+</table>
+	
+	</body>
+	
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+ 	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.stellar.min.js"></script>
+	<!-- Flexslider -->
+	<script src="js/jquery.flexslider-min.js"></script>
+	<!-- Main -->
+	<script src="js/main.js"></script>
+	
+<script>
+var MyTarget=""
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+	var prices = {p11: 2, p12: 5,p13:10,p14: 10,p15: 14,p16: 10,p21: 10,p22: 7,p23: 15,p24: 7,p25: 12,p26: 2}
+	
+	var myTarget11 = Math.floor(Math.random() * 2 + 1);
+	var myTarget12 = Math.floor(Math.random() * 6 + 1);
+
+	
+	if (MyTarget != ""){
+	$("#p"+MyTarget).css({
+							"box-shadow": "0 2px 2px -2px #0E1119",
+							"font-weight": "normal",
+							"color": "#FB667A",
+							"background-color":"unset",
+							"transform": "translate3d(-6px, 6px, 0)",  
+							"transition-delay": "0s",
+							"transition-duration": "0.4s",
+							"transition-property": "all",
+							"transition-timing-function": "line"
+							})
+						}
+	
+	MyTarget='p'+myTarget11.toString()+myTarget12.toString()
+	
+	document.getElementById(MyTarget).innerHTML =prices[MyTarget]+Math.floor(Math.random()*3-1)+"€";
+      
+	
+		$("#p"+MyTarget).css({
+							"box-shadow": "#7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px",
+							"font-weight": "bold",
+							"color": "#403E10",
+							"background-color":"#FFF842",
+							"transform": "translate3d(6px, -6px, 0)",  
+							"transition-delay": "0s",
+							"transition-duration": "0.4s",
+							"transition-property": "all",
+							"transition-timing-function": "line"
+							})
+  
+    var t = setTimeout(startTime, 500*2); //500
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+</script>
+</html>
