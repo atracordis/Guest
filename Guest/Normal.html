@@ -7,49 +7,49 @@
 	</head>
  
 	<body onload="startTime()">
+	<center><img src="images/banner.png" alt="problem" style="width:250px;height:125px;"></center>
 <h1>
   <span class="yellow">Soirée Wall Street</span></h1>
 <table class="container" >
 	<tbody>
         <tr>
-            <td width="40%">Soft (Jus de Fruits/Soda) (20 cl)</td>
+            <td id="ppp11" width="40%">Soft (Jus de Fruits/Soda) (20 cl)</td>
             <td id="pp11"><span id="p11">2</span></td>
-            <td width="40%">Jäger (4 cl) + Soft</td>
+            <td id="ppp12" width="40%">Jäger (4 cl) + Soft</td>
             <td id="pp12"><span id="p12">5</span></td>
         </tr>
         <tr>
-            <td>Smirnoff (4 cl) + Soft</td>
+            <td id="ppp13">Smirnoff (4 cl) + Soft</td>
             <td id="pp13"><span id="p13">10</span></td>
-            <td>Mojito (4 cl) + Soft</td>
+            <td id="ppp14">Mojito (4 cl) + Soft</td>
             <td id="pp14"><span id="p14">10</span></td>
         </tr>
         <tr>
-            <td>Champagne Moët (7 cl)</td>
+            <td id="ppp15">Champagne Moët (7 cl)</td>
             <td id="pp15"><span id="p15">14</span></td>
-            <td>Gin Tonic</td>
+            <td id="ppp16">Gin Tonic</td>
             <td id="pp16"><span id="p16">10</span></td>
         </tr>
         <tr>
-            <td>Rhum Cap'tain (4 cl) + Soft</td>
+            <td id="ppp21">Rhum Cap'tain (4 cl) + Soft</td>
             <td id="pp21"><span id="p21">10</span></td>
-            <td>Whiskey J&B (4 cl) + Soft</td>
+            <td id="ppp22">Whiskey J&B (4 cl) + Soft</td>
             <td id="pp22"><span id="p22">7</span></td>
         </tr>
         <tr>
-            <td>Salon (4 cl) + Soft</td>
+            <td id="ppp23">Salon (4 cl) + Soft</td>
             <td id="pp23"><span id="p23">15</span></td>
-            <td>GET Perrier (4 cl)</td>
+            <td id="ppp24">GET Perrier (4 cl)</td>
             <td id="pp24"><span id="p24">7</span></td>
         </tr>
         <tr>
-            <td>Bière Despé (33 cl)</td>
+            <td id="ppp25">Bière Despé (33 cl)</td>
             <td id="pp25"><span id="p25">12</span></td>
-            <td>Shooter (2 cl)</td>
+            <td id="ppp26">Shooter (2 cl)</td>
             <td id="pp26"><span id="p26">2</span></td>
         </tr>
     </tbody>
 </table>
-	
 	</body>
 	
 	<!-- jQuery -->
@@ -68,7 +68,9 @@
 	<script src="js/main.js"></script>
 	
 <script>
-var MyTarget=""
+var MyTarget="";
+var change=0;
+var increase=0;
 function startTime() {
     var today = new Date();
     var h = today.getHours();
@@ -94,11 +96,50 @@ function startTime() {
 							"transition-property": "all",
 							"transition-timing-function": "line"
 							})
+	$("#pp"+MyTarget).css({
+							"box-shadow": "0 2px 2px -2px #0E1119",
+							"font-weight": "normal",
+							"color": "#A7A1AE",
+							"background-color":"unset",
+							"transform": "translate3d(-6px, 6px, 0)",  
+							"transition-delay": "0s",
+							"transition-duration": "0.4s",
+							"transition-property": "all",
+							"transition-timing-function": "line"
+							})
+							
+	if (increase==0){ $("#p"+MyTarget).css({"color": "#FB667A"})} 
+	else if (increase==-1){$("#p"+MyTarget).css({"color": "#00cc00"})} 
+	else {$("#p"+MyTarget).css({"color": "#FF0000"})}
+							
 						}
 	
 	MyTarget='p'+myTarget11.toString()+myTarget12.toString()
-	
-	document.getElementById(MyTarget).innerHTML =prices[MyTarget]+Math.floor(Math.random()*3-1)+"€";
+	if (change==0){
+	change=document.getElementById(MyTarget).innerHTML
+	}
+	change2=change
+	increase=0
+	i=Math.random()
+	if (change==prices[MyTarget] ){
+	if (Math.floor(i*2)==0) {i=-1} else {i=1}
+	change=prices[MyTarget]+i;
+	document.getElementById(MyTarget).innerHTML =change+"€";
+	if (change>change2){increase=1} else {increase=-1}
+	}
+	else
+	if (change > prices[MyTarget] ){
+	if (Math.floor(i*2)==0) {i=0} else {i=-1}	
+	change=prices[MyTarget]+i
+	document.getElementById(MyTarget).innerHTML =change+"€";
+	if (change==prices[MyTarget]){increase=0} else {increase=-1}
+	}
+	else{
+	if (Math.floor(i*2)==0) {i=0} else {i=1}	
+	change=prices[MyTarget]+i
+	document.getElementById(MyTarget).innerHTML =change+"€";
+	if (change==prices[MyTarget]) {increase=0} else {increase=1}
+	}
       
 	
 		$("#p"+MyTarget).css({
@@ -112,8 +153,25 @@ function startTime() {
 							"transition-property": "all",
 							"transition-timing-function": "line"
 							})
+  		$("#pp"+MyTarget).css({
+							"box-shadow": "#7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px",
+							"font-weight": "bold",
+							"color": "#403E10",
+							"background-color":"#FFF842",
+							"transform": "translate3d(6px, -6px, 0)",  
+							"transition-delay": "0s",
+							"transition-duration": "0.4s",
+							"transition-property": "all",
+							"transition-timing-function": "line"
+							})
+							
+							
+	if (increase==0){ $("#p"+MyTarget).css({"color": "#FB667A"})} 
+	else if (increase==-1){$("#p"+MyTarget).css({"color": "#00cc00"})} 
+	else {$("#p"+MyTarget).css({"color": "#FF0000"})}
+							
   
-    var t = setTimeout(startTime, 500*2); //500
+    var t = setTimeout(startTime, 500*1); //500
 }
 function checkTime(i) {
     if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
