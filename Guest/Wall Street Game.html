@@ -7,24 +7,24 @@
 	<body onload="startTime()">
 	<center><img src="images/banner.png" alt="problem" style="width:250px;height:125px;"></center>
 <h1>
-  <span class="yellow">Wall Street Game</span></h1>
+  <span class="yellow" style="color:white;" >Wall Street Game</span></h1>
 <table class="container" >
 	<tbody>
         <tr>
             <td id="ppp11" width="40%">Soft (Jus de Fruits/Soda) (20 cl)</td>
-            <td id="pp11"><span id="p11">2€</span></td>
+            <td id="pp11"><span id="p11">4€</span></td>
             <td id="ppp12" width="40%">JägerBomb</td>
-            <td id="pp12"><span id="p12">5€</span></td>
+            <td id="pp12"><span id="p12">8€</span></td>
         </tr>
         <tr>
             <td id="ppp13">Vodka Smirnoff (4cl) + Soft</td>
             <td id="pp13"><span id="p13">10€</span></td>
             <td id="ppp14">Mojito</td>
-            <td id="pp14"><span id="p14">10€</span></td>
+            <td id="pp14"><span id="p14">13€</span></td>
         </tr>
         <tr>
             <td id="ppp15">Champagne Moët (7 cl)</td>
-            <td id="pp15"><span id="p15">14€</span></td>
+            <td id="pp15"><span id="p15">12€</span></td>
             <td id="ppp16">Gin Tonic</td>
             <td id="pp16"><span id="p16">10€</span></td>
         </tr>
@@ -36,15 +36,15 @@
         </tr>
         <tr>
             <td id="ppp23">Cocktail Salon</td>
-            <td id="pp23"><span id="p23">15€</span></td>
+            <td id="pp23"><span id="p23">13€</span></td>
             <td id="ppp24">Get Perrier (4cl)</td>
-            <td id="pp24"><span id="p24">7€</span></td>
+            <td id="pp24"><span id="p24">10€</span></td>
         </tr>
         <tr>
             <td id="ppp25">Bières (Despé ou Calsberg) 33cl</td>
-            <td id="pp25"><span id="p25">12€</span></td>
+            <td id="pp25"><span id="p25">10€</span></td>
             <td id="ppp26">Shooter (4cl)</td>
-            <td id="pp26"><span id="p26">2€</span></td>
+            <td id="pp26"><span id="p26">4€</span></td>
         </tr>
     </tbody>
 </table>
@@ -70,8 +70,13 @@ var increase=0;
 var step=0;
 function startTime() {
 
-	var prices = {p11: 2, p12: 5,p13:10,p14: 10,p15: 14,p16: 10,p21: 10,p22: 7,p23: 15,p24: 7,p25: 12,p26: 2}
-	
+	var MaxPrices = {p12 : 10, p13: 12, p22: 12, p21: 12, p26: 5, p23: 15, p24: 12, p14: 15, 
+	p16: 12, p15: 14, p25: 12, p11: 6}
+	var prices = {p12 : 8, p13: 10, p22: 10, p21: 10, p26: 4, p23: 13, p24: 10, p14: 13, 
+	p16: 10, p15: 12, p25: 10, p11: 4}
+	var MinPrices = {p12 : 5, p13: 7, p22: 7, p21: 7, p26: 2, p23: 10, p24: 7, p14: 10, 
+	p16: 7, p15: 9, p25: 7, p11: 2}
+
 	
 	
 	if (MyTarget != ""){
@@ -112,30 +117,28 @@ function startTime() {
 	
 	
 	if (step==0){ 
-		i=1;
 		MyTarget="p12";
+		document.getElementById(MyTarget).innerHTML =MaxPrices[MyTarget]+"€"
 		increase=1;
 		}
 		else
 	if (step==1){
-		i=1;
 		MyTarget="p22";
+		document.getElementById(MyTarget).innerHTML =MaxPrices[MyTarget]+"€"
 		increase=1;
 		} else
 	if (step==2){
-		i=-1;
 		MyTarget="p21";
+		document.getElementById(MyTarget).innerHTML =MinPrices[MyTarget]+"€"
 		increase=-1;
 		} else
 	if (step==3){
-		i=1;
 		MyTarget="p11";
+		document.getElementById(MyTarget).innerHTML =MaxPrices[MyTarget]+"€"
 		increase=1;
 		} else {step=-1;
 		increase=1}	
 	
-	change=prices[MyTarget]+i;
-	document.getElementById(MyTarget).innerHTML =change+"€";
 	
 	step=step+1
 	
@@ -171,7 +174,7 @@ function startTime() {
 	else {$("#p"+MyTarget).css({"color": "#FF0000"})}
 							
   
-    var t = setTimeout(startTime, 500*60); //500
+    var t = setTimeout(startTime, 500*2); //500
 }
 </script>
 </html>
